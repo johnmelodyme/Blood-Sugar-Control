@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "69427238502",
+    "firebase_url": "https://bloodysugarcontrol.firebaseio.com",
+    "project_id": "bloodysugarcontrol",
+    "storage_bucket": "bloodysugarcontrol.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69427238502:android:31bcd9903a3034f06cbfa7",
+        "android_client_info": {
+          "package_name": "com.johnmelodyme.bloodsugarcontrolv1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "69427238502-2m65mb66gjje38mi8l0unffkg9rr28vl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.johnmelodyme.bloodsugarcontrolv1",
+            "certificate_hash": "d8fbb0da17ff5ecb20b1a97058089b83e80bc51b"
+          }
+        },
+        {
+          "client_id": "69427238502-r3a75dll66imojg1i2mtqbn3bked73no.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgSKfIpG0m0kdliFxc4DPgNZwWuICNQvg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "69427238502-r3a75dll66imojg1i2mtqbn3bked73no.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

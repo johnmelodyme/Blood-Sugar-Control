@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">血糖控制軟件</string>
+    <string name="Register" translatable="false">注冊</string>
+    <string name="hint_email" translatable="false">电邮</string>
+    <string name="hint_password" translatable="false">密碼</string>
+    <string name="copyright">2020 StarLabs Bioscience © 保留所有權利</string>
+    <string name="hint_name">姓名</string>
+    <string name="新來的">注冊</string>
+    <string name="忘記什麼鬼密碼的">忘記密碼？</string>
+    <string name="blablabla">登錄</string>
+    <string name="回">請再次點擊返回退出</string>
+    <string name="警告">請輸入電子郵件，名稱和密碼。</string>
+    <string name="enteremail">請輸入電子郵件</string>
+    <string name="enter_name">請輸入你的名字</string>
+    <string name="enterpassword">請輸入您的密碼</string>
+    <string name="password_length">密碼必須超過六個字母</string>
+    <string name="回回">再按一次返回登錄頁面</string>
+    <string name="pauseeee">暂停</string>
+    <string name="playlalalalalala">播放</string>
+    <string name="stop">"停 "</string>
+    <string name="Profile">我</string>
+    <string name="TopUp">充值</string>
+    <string name="News">新聞</string>
+    <string name="reset_passw">重設密碼</string>
+    <string name="aboutus">關於我們</string>
+    <string name="Version">版本</string>
+    <string name="signout">登出</string>
+    <string name="main">主菜單</string>
+    <string name="Contactus">聯繫我們</string>
+</resources>

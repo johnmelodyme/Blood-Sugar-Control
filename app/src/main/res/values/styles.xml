@@ -1,0 +1,22 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="whateverthemeisthisidontcarebecauseitdontmatteranyway" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- FULLSCREEN -->
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="BUTWITHACTIONBAR" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- FULLSCREEN -->
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+</resources>

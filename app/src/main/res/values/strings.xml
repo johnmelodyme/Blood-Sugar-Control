@@ -1,0 +1,53 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="true">Blood Sugar Control</string>
+    <string name="Register" translatable="true">Register</string>
+    <string name="hint_email" translatable="true">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name" translatable="true">Name</string>
+    <string name="copyright" translatable="true"> © 2019 Star Labs Bioscience All right Reserved</string>
+    <string name="新來的">Register Now</string>
+    <string name="忘記什麼鬼密碼的">Forgot Password</string>
+    <string name="blablabla">Login</string>
+    <string name="回"> Please click Back again to exit</string>
+    <string name="回回">Pressed back again to return</string>
+    <string name="警告">Please Enter All the Particulars</string>
+    <string name="enteremail">Please Enter Email</string>
+    <string name="enterpassword">Please Enter Password</string>
+    <string name="password_length">The Password Must be more than 8 letters</string>
+    <string name="enter_name">Please Enter Your Name</string>
+    <string name="failed" translatable="false">failed</string>
+
+
+    <string name="testing" translatable="false">Temp</string>
+    <string name="welcome" translatable="false">Welcome, User</string>
+    <string name="comingsoon" translatable="false">Coming Soon</string>
+
+
+    <string name="pauseeee">Pause</string>
+    <string name="playlalalalalala">Play</string>
+    <string name="forward" translatable="false"> +5 Sec </string>
+    <string name="backward" translatable="false"> -5 sec </string>
+    <string name="stop">Stop</string>
+
+    <string name="reset_passw">Reset Password</string>
+
+    <string name="Profile">Profile</string>
+    <string name="TopUp">Top Up</string>
+    <string name="News">News</string>
+    <!--SETTING -->
+    <string name="emailtodeveloperla" translatable="false">Email To developer</string>
+    <string name="aboutus">About Us</string>
+    <string name="Version">Version</string>
+    <string name="ver_num" translatable="false">1.0.0</string>
+    <string name="v" translatable="false">Version 1.0.1</string>
+    <string name="Thi" translatable="false">This Application is developed by STAR LABS BIOSCIENCE SDN BHD</string>
+    <string name="signout">Log Out</string>
+
+    <string name="main">MAIN MENU</string>
+    <string name="Contactus"> Contact Us</string>
+
+    <!--BLE-->
+    <string name="ble_on" translatable="false">Bluetooth ON </string>
+    <string name="ble_off" translatable="false"> Bluetooth Off </string>
+    <string name="ble_connecteddevice" translatable="false">Connected Device: </string>
+</resources>

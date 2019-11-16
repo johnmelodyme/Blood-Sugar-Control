@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#212121"
+    tools:context=".sphrahe">
+
+    <ImageView
+        android:id="@+id/thesplashimage"
+        android:layout_width="470dp"
+        android:layout_height="828dp"
+        android:background="@color/藍"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.309"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.457"
+        app:srcCompat="@mipmap/splash" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="127dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="1300dp"
+        android:src="@mipmap/pb"
+        app:layout_constraintBottom_toTopOf="@+id/thesplashimage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.542" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
