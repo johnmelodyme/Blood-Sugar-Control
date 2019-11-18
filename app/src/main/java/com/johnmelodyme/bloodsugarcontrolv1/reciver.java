@@ -1,5 +1,4 @@
 package com.johnmelodyme.bloodsugarcontrolv1;
-
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -31,7 +30,7 @@ public class reciver extends BroadcastReceiver {
                     break;
                 case BluetoothAdapter.STATE_TURNING_OFF:
                     String otw_offing_藍牙正在關閉;
-                    otw_offing_藍牙正在關閉 = "Bluetooth is turing OFF";
+                    otw_offing_藍牙正在關閉 = "Bluetooth is turning OFF";
                     wtf.toast(activitycontent, otw_offing_藍牙正在關閉);
                     break;
                 case BluetoothAdapter.STATE_ON:
@@ -47,5 +46,4 @@ public class reciver extends BroadcastReceiver {
             }
         }
     }
-
 }
