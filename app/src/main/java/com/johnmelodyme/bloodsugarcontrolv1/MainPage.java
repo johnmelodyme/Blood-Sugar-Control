@@ -78,7 +78,16 @@ public class MainPage extends AppCompatActivity {
         setting_Activity_設置 = findViewById(R.id.設置);
 
         //seekBar_seekingtheBar_芭比 = findViewById(R.id.芭比);
-
+        // 藍牙:
+        if(BT_藍牙適配器 == null){
+            String bna = "Bluetooth is not available";
+            Toast.makeText(MainPage.this,
+                    bna,
+                    Toast.LENGTH_LONG)
+                    .show();
+            finish();
+            return;
+        }
         // 媒体播放器 ::
         千山萬水总是情永遠愛我行不行 = MediaPlayer.create(this, R.raw.somethingsomething);
         千山萬水总是情永遠愛我行不行.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -110,7 +119,6 @@ public class MainPage extends AppCompatActivity {
                 }
             }
         });
-
         rewind_轉回.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,7 +134,6 @@ public class MainPage extends AppCompatActivity {
                 }
             }
         });
-
         forward_向前.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,7 +154,6 @@ public class MainPage extends AppCompatActivity {
                 }
             }
         });
-        
         stop_停.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -161,7 +167,6 @@ public class MainPage extends AppCompatActivity {
                 System.out.println("人間自有真情在, 教導我如何的愛, 也是愛。");
             }
         });
-
         ////////////////////////////////////////////////////////////////////////
         BLE_藍蕉牙.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,7 +176,6 @@ public class MainPage extends AppCompatActivity {
                 startActivity(ble);
             }
         });
-
         /*
         boolean processing = true;
         int number_processed = 0;
@@ -190,14 +194,12 @@ public class MainPage extends AppCompatActivity {
                 facebook();
             }
         });
-
         web_網站.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 starlab();
             }
         });
-
         wechat_微信.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -243,28 +245,24 @@ public class MainPage extends AppCompatActivity {
                 comingSoon();
             }
         });
-
         topup_充值.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 comingSoon();
             }
         });
-
         news_消息.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 comingSoon();
             }
         });
-
         setting_Activity_設置.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toSettingActivity();
             }
         });
-
     }
 
     ////////////////////////////////////////////////////////////
@@ -273,21 +271,18 @@ public class MainPage extends AppCompatActivity {
         設置 = new Intent(MainPage.this, sadthing.class);
         startActivity(設置);
     }
-
     private void starlab() {
         Intent 網站;
         網站 = new Intent(Intent.ACTION_VIEW,
                 Uri.parse("https://www.starlabs.com.my/"));
         startActivity(網站);
     }
-
     private void facebook() {
         Intent 面子書;
         面子書 = new Intent(Intent.ACTION_VIEW,
                 Uri.parse("https://web.facebook.com/StarLabsBioscience?_rdc=1&_rdr"));
         startActivity(面子書);
     }
-
     ////////// temp ////////
     private void comingSoon() {
         Toast.makeText(MainPage.this,
@@ -298,7 +293,6 @@ public class MainPage extends AppCompatActivity {
 
     // 兩次按下以退出應用程序 ::
     boolean doubleBackToExitPressedOne = false;
-
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOne) {
@@ -317,7 +311,6 @@ public class MainPage extends AppCompatActivity {
             }
         }, 2000);
     }
-
     private void stopmusic() {
         String 停止;
         停止 = getResources().getString(R.string.stop);

@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/whateverthemeisthisidontcarebecauseitdontmatteranyway"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ble"/>
+        <activity android:name=".bble"></activity>
+        <activity android:name=".ble" />
         <activity
             android:name=".sadthing"
             android:theme="@style/BUTWITHACTIONBAR" />
