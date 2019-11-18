@@ -25,19 +25,23 @@ public class reciver extends BroadcastReceiver {
             final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
             switch (state) {
                 case BluetoothAdapter.STATE_OFF:
-                    String ble_off_BLE已關閉 = "Bluetooth is OFF";
+                    String ble_off_BLE已關閉;
+                    ble_off_BLE已關閉 = "Bluetooth is OFF";
                     wtf.toast(activitycontent, ble_off_BLE已關閉);
                     break;
                 case BluetoothAdapter.STATE_TURNING_OFF:
-                    String otw_offing_藍牙正在關閉 = "Bluetooth is turing OFF";
+                    String otw_offing_藍牙正在關閉;
+                    otw_offing_藍牙正在關閉 = "Bluetooth is turing OFF";
                     wtf.toast(activitycontent, otw_offing_藍牙正在關閉);
                     break;
                 case BluetoothAdapter.STATE_ON:
-                    String ble_on_藍牙開啟 = "Bluetooth is ON";
+                    String ble_on_藍牙開啟;
+                    ble_on_藍牙開啟 = "Bluetooth is ON";
                     wtf.toast(activitycontent, ble_on_藍牙開啟);
                     break;
                 case BluetoothAdapter.STATE_TURNING_ON:
-                    String otw_oning = "Bluetooth is turning ON";
+                    String otw_oning;
+                    otw_oning = "Bluetooth is turning ON";
                     wtf.toast(activitycontent, otw_oning);
                     break;
             }
