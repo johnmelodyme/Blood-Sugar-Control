@@ -1,4 +1,4 @@
-package com.johnmelodyme.bloodsugarcontrolv1;
+package com.johnmelodyme.BSC;
 
 import androidx.appcompat.app.AppCompatActivity;
 

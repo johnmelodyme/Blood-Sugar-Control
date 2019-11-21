@@ -1,13 +1,8 @@
-package com.johnmelodyme.bloodsugarcontrolv1;
+package com.johnmelodyme.BSC;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.Switch;
-import android.widget.Toast;
-
-import okhttp3.internal.Util;
 
 public class reciver extends BroadcastReceiver {
     Context activitycontent;

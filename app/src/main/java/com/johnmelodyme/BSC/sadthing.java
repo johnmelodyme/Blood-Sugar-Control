@@ -1,4 +1,4 @@
-package com.johnmelodyme.bloodsugarcontrolv1;
+package com.johnmelodyme.BSC;
 /*
  *このページは、読み込みに伴うスプラッシュです。
  * これは John Melody Melissa によってコーディングされています。
@@ -29,14 +29,14 @@ public class sadthing extends AppCompatActivity {
     TextView $VERSION;
     Button Logout_登出;
 
-    FirebaseAuth F_發克油;
+    FirebaseAuth F;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sadthing);
 
-        F_發克油 = FirebaseAuth.getInstance();
+        F = FirebaseAuth.getInstance();
 
         emailtodeveloperlaelseyouwillbeslowlycrying = findViewById(R.id.emailtodeveloper);
         aboutUs = findViewById(R.id.Aboutus);
@@ -95,7 +95,7 @@ public class sadthing extends AppCompatActivity {
     }
 
     private void please_log_out() {
-        F_發克油.signOut();
+        F.signOut();
         FirebaseAuth.AuthStateListener F_listener;
         F_listener = new FirebaseAuth.AuthStateListener() {
             @Override

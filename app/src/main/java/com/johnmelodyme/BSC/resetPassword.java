@@ -1,4 +1,4 @@
-package com.johnmelodyme.bloodsugarcontrolv1;
+package com.johnmelodyme.BSC;
 /**
  *このページは、読み込みに伴うスプラッシュです。
  * これは John Melody Melissa によってコーディングされています。
@@ -9,7 +9,6 @@ package com.johnmelodyme.bloodsugarcontrolv1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;

@@ -1,10 +1,18 @@
-package com.johnmelodyme.bloodsugarcontrolv1;
+package com.johnmelodyme.BSC;
 /*
- *このページは、読み込みに伴うスプラッシュです。
- * これは John Melody Melissa によってコーディングされています。
- * このライセンスは、商標、サービスマーク、
- * または貢献者のロゴ（準拠するために必要な場合を除く）
- * セクション3.4の通知要件）。
+ * YES , THIS IS CODED BY ME,
+ * I RANTING HERE BECAUSE THIS IS THE ONLY PLACE YOUR
+ * NOTICE THE ISSUE.
+ * I AM A HIGH SCHOOL STUDENT WHO STARTED TO CODE FROM BOOK
+ * WHEN I WAS 15 , IN YOUR COUNTRY YOU STILL NEED
+ * A COCK-LESS TEACHER TO TEACH YOU. AT LEAST AS POOR
+ * AS MY COUNTRY IS , I LEARN FROM A BOOK.
+ * YOU MIGHT MAKE FUN OF MY CODE, BECAUSE THE LITTLE PUSSY
+ * OF YOU WANT TO CRY BUT THERE'S NO OPPORTUNITY TO DO SO,
+ * BECAUSE COMMUNISM ALL ITS BEST.
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  DON'T LIKE WHAT I SAY ? THEN BETTER RESPECT ME, MY RACE,
+ *  MY COUNTRY AND MY JOB.
  **/
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,25 +34,29 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Request.Builder;
-import okhttp3.Response;
-
 public class LoginActivitea extends AppCompatActivity {
-    ImageView theStarlabthingy;
-    EditText 電郵;
-    EditText 密碼;
-    Button 登錄按鍵;
-    TextView 新來的;
-    TextView 忘了密碼的;
-    //TextView tmp;
 
-    FirebaseAuth this_is_the_server_that_no_one_in_this_company_is_giving_a_shit_about;
+    /*I HAVE TO CHANGE ALL THE VARIABLE BECAUSE SOME PEOPLE
+    * DON'T HAVE SENSE OF HUMOR AND PROBABLY THEY DON'T UNDERSTAND
+    * WHAT I WROTE HERE. THEY HASTE TO ANGER AND EMPLOYER ARE ON
+    * THEIR SIDE SO, OFF YOU GO.
+    * #CRYINGBABY "you need to grow up and get sense of humor"
+     */
+    ImageView theStarlabthingy;
+    EditText eeemail;
+    EditText stupidPassword;
+    Button loginbutton;
+    TextView newUser;
+    TextView absentMinded;
+
+    /*
+    * FIREBASE IS SOMETHING CHINA AND MY EMPLOYER HATE ABOUT
+    * COMMUNISTIC VIEW, NARROW MINDED. JUST BECAUSE FIREBASE
+    * IS TECHNOLOGY MY EMPLOYER HATE IT? RACIST!
+    * ***********************************************
+    * FIREBASE IS THE BEST! GOOGLE ARE GENEROUS!
+    * */
+    FirebaseAuth auth_firebase;
     TextView welcome_user;
 
 
@@ -54,42 +66,39 @@ public class LoginActivitea extends AppCompatActivity {
         setContentView(R.layout.activity_login_activitea);
 
         theStarlabthingy = findViewById(R.id.imageView照片);
-        電郵 = findViewById(R.id.登錄電郵);
-        密碼 = findViewById(R.id.登錄密碼);
-        登錄按鍵 = findViewById(R.id.登錄按鍵);
-        //新來的  = findViewById(R.id.新來的);
-       // 忘了密碼的 = findViewById(R.id.忘了密碼的);
+        eeemail = findViewById(R.id.登錄電郵);
+        stupidPassword = findViewById(R.id.登錄密碼);
+        loginbutton = findViewById(R.id.登錄按鍵);
+        newUser  = findViewById(R.id.新來的);
+        absentMinded = findViewById(R.id.忘了密碼的);
 
         //tmp = findViewById(R.id.temp);
        //welcome_user = findViewById(R.id.welcomeUserlawhatevershitla);
-        this_is_the_server_that_no_one_in_this_company_is_giving_a_shit_about = FirebaseAuth.getInstance();
+        auth_firebase = FirebaseAuth.getInstance();
 
-        if (this_is_the_server_that_no_one_in_this_company_is_giving_a_shit_about
+        if (auth_firebase
                 .getCurrentUser() != null){
-            音樂();
+            moozik();
         }
-/*
-        新來的.setOnClickListener(new View.OnClickListener() {
+
+        newUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent 註冊;
-                註冊 = new Intent(LoginActivitea.this, Register.class);
-                startActivity(註冊);
+                Intent regista;
+                regista = new Intent(LoginActivitea.this, Register.class);
+                startActivity(regista);
             }
         });
 
-
-
-        忘了密碼的.setOnClickListener(new View.OnClickListener() {
+        absentMinded.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent 重設密碼;
-                重設密碼 = new Intent(LoginActivitea.this, resetPassword.class);
-                startActivity(重設密碼);
+                Intent resetpassword;
+                resetpassword = new Intent(LoginActivitea.this, resetPassword.class);
+                startActivity(resetpassword);
             }
         });
-*/
-//////////////////////////////////////////////////////
+
         /*
         OkHttpClient client;
         String url;
@@ -123,35 +132,15 @@ public class LoginActivitea extends AppCompatActivity {
          */
 
         //////////////////////////////////////////////////////
-        登錄按鍵.setOnClickListener(new View.OnClickListener() {
+        loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常重要的設置 ::
+
                 String email;
                 final String password;
-                email = 電郵.getText().toString();
-                password = 密碼.getText().toString();
-                /*
-                if (email.isEmpty()){
-                    String msg;
-                    msg = "Please Enter Email";
-                    電郵.setError(msg);
-                    電郵.requestFocus();
-                }
-                if (password.isEmpty()){
-                    String msg;
-                    msg = "Please Enter Password";
-                    密碼.setError(msg);
-                    密碼.requestFocus();
-                }
-                else {
-                    System.out.println("FUNCTION");
-                    // 網絡服務器//
-                    Intent 音樂播放器;
-                    音樂播放器 = new Intent(LoginActivitea.this, MainPage.class);
-                    startActivity(音樂播放器);
-                }
-                 */
+                email = eeemail.getText().toString();
+                password = stupidPassword.getText().toString();
+
                 String enterEmail = "Please Enter an Email";
                 String enterPassword = "Please Enter Password";
 
@@ -168,17 +157,14 @@ public class LoginActivitea extends AppCompatActivity {
                             Toast.LENGTH_SHORT)
                             .show();
                 }
-                this_is_the_server_that_no_one_in_this_company_is_giving_a_shit_about
+                auth_firebase
                         .signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(LoginActivitea.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                //如果登錄失敗，則向用戶顯示一條消息。如果登錄成功
-                                //將會通知auth狀態監聽器，並提供邏輯來處理
-                                //登錄的用戶可以在偵聽器中處理。
                                 if (!task.isSuccessful()){
                                     if (password.length() <= 8 ){
-                                        密碼.setError(
+                                        stupidPassword.setError(
                                                 getString(
                                                         R.string.password_length
                                                 )
@@ -194,7 +180,7 @@ public class LoginActivitea extends AppCompatActivity {
                                         ).show();
                                     }
                                 } else {
-                                    音樂();
+                                    moozik();
                                 }
                             }
                         });
@@ -211,7 +197,7 @@ public class LoginActivitea extends AppCompatActivity {
          */
     }
 
-    private void 音樂() {
+    private void moozik() {
         Intent musicpage;
         musicpage = new Intent(LoginActivitea.this, MainPage.class);
         startActivity(musicpage);
@@ -221,7 +207,7 @@ public class LoginActivitea extends AppCompatActivity {
     public void onStart(){
         super.onStart();
         FirebaseUser currentUser;
-        currentUser = this_is_the_server_that_no_one_in_this_company_is_giving_a_shit_about.getCurrentUser();
+        currentUser = auth_firebase.getCurrentUser();
     }
 
     public void temporary(){
@@ -231,8 +217,7 @@ public class LoginActivitea extends AppCompatActivity {
     }
 
 
-    /////////////////////////////////////////////////////////////////////////////
-    // 兩次按下以退出應用程序 ::
+    // बाहर निकलने के लिए दो बार क्लिक करें ::
     boolean doubleBackToExitPressedOne = false;
 
     @Override

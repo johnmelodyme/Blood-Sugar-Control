@@ -1,4 +1,4 @@
-package com.johnmelodyme.bloodsugarcontrolv1;
+package com.johnmelodyme.BSC;
 //https://www.youtube.com/watch?v=5Tm--PHhbJo
 ////////////////////////////////////////////
 /*

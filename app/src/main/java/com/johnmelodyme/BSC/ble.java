@@ -1,4 +1,4 @@
-package com.johnmelodyme.bloodsugarcontrolv1;
+package com.johnmelodyme.BSC;
 
 /*
  *このページは、読み込みに伴うスプラッシュです。
@@ -12,14 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
-import android.bluetooth.le.ScanCallback;
-import android.bluetooth.le.ScanResult;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -60,7 +56,6 @@ public class ble extends AppCompatActivity {
             startActivityForResult(ontheBluetooth, REQUEST_ENABLE_BT);
         }
     }
-
 
     public void on(View v){
         if (BT_藍牙適配器 == null || !BT_藍牙適配器.isEnabled()) {

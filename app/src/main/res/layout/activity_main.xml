@@ -186,8 +186,8 @@
 
     <Button
         android:id="@+id/播放"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="190dp"
+        android:layout_height="87dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="212dp"
         android:layout_marginEnd="80dp"

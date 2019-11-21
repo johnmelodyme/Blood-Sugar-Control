@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.johnmelodyme.bloodsugarcontrolv1"
+    package="com.johnmelodyme.BSC"
     android:installLocation="preferExternal"
     android:versionCode="502"
     android:versionName="0.5.2"
@@ -23,34 +23,34 @@
         android:supportsRtl="true"
         android:theme="@style/whateverthemeisthisidontcarebecauseitdontmatteranyway"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".bble"></activity>
-        <activity android:name=".ble" />
+        <activity android:name="com.johnmelodyme.BSC.bble"></activity>
+        <activity android:name="com.johnmelodyme.BSC.ble" />
         <activity
-            android:name=".sadthing"
+            android:name="com.johnmelodyme.BSC.sadthing"
             android:theme="@style/BUTWITHACTIONBAR" />
         <activity
-            android:name=".preferencesla"
+            android:name="com.johnmelodyme.BSC.preferencesla"
             android:theme="@style/whateverthemeisthisidontcarebecauseitdontmatteranyway" />
         <activity
-            android:name=".news"
+            android:name="com.johnmelodyme.BSC.news"
             android:theme="@style/whateverthemeisthisidontcarebecauseitdontmatteranyway" />
         <activity
-            android:name=".resetPassword"
+            android:name="com.johnmelodyme.BSC.resetPassword"
             android:screenOrientation="portrait"
             android:theme="@style/whateverthemeisthisidontcarebecauseitdontmatteranyway" />
         <activity
-            android:name=".Register"
+            android:name="com.johnmelodyme.BSC.Register"
             android:screenOrientation="portrait"
             android:theme="@style/whateverthemeisthisidontcarebecauseitdontmatteranyway" />
         <activity
-            android:name=".MainPage"
+            android:name="com.johnmelodyme.BSC.MainPage"
             android:screenOrientation="portrait"
             android:theme="@style/whateverthemeisthisidontcarebecauseitdontmatteranyway" />
         <activity
-            android:name=".LoginActivitea"
+            android:name="com.johnmelodyme.BSC.LoginActivitea"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".sphrahe"
+            android:name="com.johnmelodyme.BSC.sphrahe"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action
