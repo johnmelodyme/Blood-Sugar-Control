@@ -98,7 +98,7 @@ public class MainPage extends AppCompatActivity {
             finish();
             return;
         }
-        // 媒体播放器 ::
+      
         FCH = MediaPlayer.create(this, R.raw.somethingsomething);
         FCH.setAudioStreamType(AudioManager.STREAM_MUSIC);
         play.setOnClickListener(new View.OnClickListener() {
