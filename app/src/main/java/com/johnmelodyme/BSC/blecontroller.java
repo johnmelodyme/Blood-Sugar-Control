@@ -23,7 +23,6 @@ public class blecontroller {
 		return bluetoothAdapter;
 	}
 
-	// 是否支持蓝牙
 	public boolean isSupportBlueTooth() {
 		if (bluetoothAdapter != null) {
 			return true;
@@ -32,56 +31,56 @@ public class blecontroller {
 		}
 	}
 
-	// 蓝牙是否打开
+	// switch
 	public boolean getSwitchBlueTooth() {
 		assert(bluetoothAdapter != null);
 		return bluetoothAdapter.isEnabled();
 	}
 
-	// 打开蓝牙
+	// enable
 	public void tureOnBlueTooth(Activity activity) {
 		Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 		activity.startActivity(intent);
 	}
 
-	// 关闭蓝牙
+	// Disable BLuetooth
 	public void tureOffBlueTooth() {
 		bluetoothAdapter.disable();
 	}
 
-	// 蓝牙可见
+	// Bluetooth visibility
 	public void isVisibility(Context context) {
 		Intent dIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
 		dIntent.putExtra(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE, 300);
 		context.startActivity(dIntent);
 	}
 
-	// 查找设备
+	// Find a device
 	public void findDevice() {
 		assert(bluetoothAdapter != null);
 		bluetoothAdapter.startDiscovery();
 	}
 
-	// 获取绑定设备
+	// Get a binding device
 	public List<BluetoothDevice> getBlueToothDeviceList() {
 		return new ArrayList<>(bluetoothAdapter.getBondedDevices());
 	}
 
-	// 与设备解除配对
+	// Unpairing with device
 	public boolean removeBond(Class btClass, BluetoothDevice btDevice) throws Exception {
 		Method removeBondMethod = btClass.getMethod("removeBond");
 		Boolean returnValue = (Boolean) removeBondMethod.invoke(btDevice);
 		return returnValue.booleanValue();
 	}
 
-	// 与设备配对
+	// Device Pairing
 	public boolean createBond(Class btClass, BluetoothDevice btDevice) throws Exception {
 		Method createBondMethod = btClass.getMethod("createBond");
 		Boolean returnValue = (Boolean) createBondMethod.invoke(btDevice);
 		return returnValue.booleanValue();
 	}
 
-	//获取已连接设备信息
+	// Get connected device information
 	public List<String> getConnectDevice() {
 		List<String> allDeviceName= new ArrayList<>();
 		Class<BluetoothAdapter> bluetoothAdapterClass = BluetoothAdapter.class;
