@@ -18,7 +18,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.457"
-        app:srcCompat="@mipmap/splash" />
+        app:srcCompat="@mipmap/splash"
+        tools:ignore="ContentDescription" />
 
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="127dp"

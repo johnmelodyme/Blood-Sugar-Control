@@ -1,20 +1,5 @@
 package com.johnmelodyme.BSC;
 
-/*
- * YES , THIS IS CODED BY ME,
- * I RANTING HERE BECAUSE THIS IS THE ONLY PLACE YOUR
- * NOTICE THE ISSUE.
- * I AM A HIGH SCHOOL STUDENT WHO STARTED TO CODE FROM BOOK
- * WHEN I WAS 15 , IN YOUR COUNTRY YOU STILL NEED
- * A COCK-LESS TEACHER TO TEACH YOU. AT LEAST AS POOR
- * AS MY COUNTRY IS , I LEARN FROM A BOOK.
- * YOU MIGHT MAKE FUN OF MY CODE, BECAUSE THE LITTLE PUSSY
- * OF YOU WANT TO CRY BUT THERE'S NO OPPORTUNITY TO DO SO,
- * BECAUSE COMMUNISM ALL ITS BEST.
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  DON'T LIKE WHAT I SAY ? THEN BETTER RESPECT ME, MY RACE,
- *  MY COUNTRY AND MY JOB.
- **/
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,11 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainPage extends AppCompatActivity {
-    /*I HAVE TO CHANGE ALL THE VARIABLE BECAUSE SOME PEOPLE
-     * DON'T HAVE SENSE OF HUMOR AND PROBABLY THEY DON'T UNDERSTAND
-     * WHAT I WROTE HERE. THEY HASTE TO ANGER AND EMPLOYER ARE ON
-     * THEIR SIDE SO, OFF YOU GO.
-     */
+    
     BluetoothAdapter BT_ADA;
     BluetoothManager BT_MAN;
 
@@ -84,7 +65,6 @@ public class MainPage extends AppCompatActivity {
         topup = findViewById(R.id.充值);
         news = findViewById(R.id.消息);
         BLE_banana = findViewById(R.id.bluetooth);
-        BT = findViewById(R.id.UpdateConnectedBLEDEVICE);
         BT_ADA = BluetoothAdapter.getDefaultAdapter();
         BT_MAN = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         setting_Activity = findViewById(R.id.設置);
@@ -104,6 +84,8 @@ public class MainPage extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                /*
                 if (FCH.isPlaying()){
                     String Pause;
                     Pause = getResources()
@@ -127,6 +109,7 @@ public class MainPage extends AppCompatActivity {
                             , Toast.LENGTH_SHORT)
                             .show();
                 }
+                 */
             }
         });
         rewind.setOnClickListener(new View.OnClickListener() {
@@ -174,7 +157,7 @@ public class MainPage extends AppCompatActivity {
                         .show();
                 FCH.pause();
                 play.setBackgroundResource(R.mipmap.blek);
-                System.out.println("YOU CAN MOCK ME BUT DON'T MAKE YOU BETTER THAN ME");
+                System.out.println("YOU CAN MOCK ME BUT THAT DON'T MAKE YOU BETTER THAN ME");
             }
         });
         ////////////////////////////////////////////////////////////////////////
@@ -283,22 +266,11 @@ public class MainPage extends AppCompatActivity {
         Toast.makeText(this, R.string.回回,
                 Toast.LENGTH_SHORT)
                 .show();
-        stopmusic();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 doubleBackToExitPressedOne = false;
             }
         }, 2000);
-    }
-    private void stopmusic() {
-        String fstop;
-        fstop = getResources().getString(R.string.stop);
-        Toast.makeText(MainPage.this, fstop
-                ,Toast.LENGTH_SHORT)
-                .show();
-        FCH.pause();
-        play.setBackgroundResource(R.mipmap.blek);
-        System.out.println("SOMEDAY YOU WILL DIE AS WELL, WE ARE ALL HUMAN");
     }
 }

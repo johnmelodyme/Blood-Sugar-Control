@@ -15,8 +15,10 @@ package com.johnmelodyme.BSC;
  *  MY COUNTRY AND MY JOB.
  **/
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -69,8 +71,8 @@ public class LoginActivitea extends AppCompatActivity {
         eeemail = findViewById(R.id.登錄電郵);
         stupidPassword = findViewById(R.id.登錄密碼);
         loginbutton = findViewById(R.id.登錄按鍵);
-        newUser  = findViewById(R.id.新來的);
-        absentMinded = findViewById(R.id.忘了密碼的);
+        //newUser  = findViewById(R.id.新來的);
+        //absentMinded = findViewById(R.id.忘了密碼的);
 
         //tmp = findViewById(R.id.temp);
        //welcome_user = findViewById(R.id.welcomeUserlawhatevershitla);
@@ -80,7 +82,7 @@ public class LoginActivitea extends AppCompatActivity {
                 .getCurrentUser() != null){
             moozik();
         }
-
+/*
         newUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,6 +101,7 @@ public class LoginActivitea extends AppCompatActivity {
             }
         });
 
+ */
         /*
         OkHttpClient client;
         String url;
@@ -128,7 +131,6 @@ public class LoginActivitea extends AppCompatActivity {
                 }
             }
         });
-
          */
 
         //////////////////////////////////////////////////////
@@ -143,14 +145,12 @@ public class LoginActivitea extends AppCompatActivity {
 
                 String enterEmail = "Please Enter an Email";
                 String enterPassword = "Please Enter Password";
-
                 if (TextUtils.isEmpty(email)){
                     Toast.makeText(getApplicationContext(),
                             enterEmail,
                             Toast.LENGTH_SHORT)
                             .show();
                 }
-
                 if (TextUtils.isEmpty(password)){
                     Toast.makeText(getApplicationContext(),
                             enterPassword,
@@ -186,15 +186,6 @@ public class LoginActivitea extends AppCompatActivity {
                         });
             }
         });
-
-        /*
-        tmp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                temporary();
-            }
-        });
-         */
     }
 
     private void moozik() {
