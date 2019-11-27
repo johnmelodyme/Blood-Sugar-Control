@@ -4,7 +4,9 @@ package com.johnmelodyme.BSC;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
+import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
@@ -18,12 +20,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Set;
+
 public class MainPage extends AppCompatActivity {
     
     BluetoothAdapter BT_ADA;
     BluetoothManager BT_MAN;
     blecontroller control;
     BLEDeviceAdapter adapta;
+    BluetoothSocket BLE_socket;
+    BluetoothDevice device;
 
     Button rewind;
     Button forward;
@@ -73,8 +80,21 @@ public class MainPage extends AppCompatActivity {
         BT_MAN = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         setting_Activity = findViewById(R.id.設置);
         connected_d = findViewById(R.id.connected);
-        on_off_ble = findViewById(R.id.ble_switch);
 
+        // ""
+        if(!(BT_ADA.isEnabled())){
+            for (int i=0; i < 2; i++) {
+                Toast.makeText(this, "Please Connect to \" NST-BSC \".",
+                        Toast.LENGTH_LONG)
+                        .show();
+            }
+            android.content.Intent enableIntent = new android.content.Intent(
+                    android.bluetooth.BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableIntent, 0);
+        }
+
+
+        // "IF BLUETOOTH NOT SUPPORTED ::
         if(BT_ADA == null){
             String bna = "Bluetooth is not available";
             Toast.makeText(MainPage.this,
@@ -85,6 +105,46 @@ public class MainPage extends AppCompatActivity {
             return;
         }
 
+        // BLUETOOTH SCANNER ::
+        if(BT_ADA.getScanMode() !=
+        BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE){
+            android.content.Intent discoverable = new android.content.Intent(
+                    BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE
+            );
+            /*
+            discoverable.putExtra(
+                    BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,
+                    3000
+            );
+            */
+            startActivity(discoverable);
+        }
+        /*
+        final String the_device_I_want_to_connect;
+        the_device_I_want_to_connect = "NST-BSC";
+        String devName;
+        devName = device.getName();
+        if(device.equals("NST-BST")){
+            BT_ADA.enable();
+        }
+         */
+
+        Set <BluetoothDevice> pairedDevices = BT_ADA.getBondedDevices();
+        if(pairedDevices.size() > 0){
+            for (BluetoothDevice device : pairedDevices){
+                String deviceName = device.getName();
+            }
+            if (device.getName().equals("NST-BSC")){
+                BT_ADA.enable();
+            }
+            else {
+                String nst = "Please Use NST-BSC Headset!";
+                System.out.println(nst);
+                Toast.makeText(this, nst,
+                        Toast.LENGTH_LONG)
+                        .show();
+            }
+        }
 
         FCH = MediaPlayer.create(this, R.raw.somethingsomething);
         FCH.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -94,7 +154,6 @@ public class MainPage extends AppCompatActivity {
                 String connectedDevice = connected_d
                         .getText()
                         .toString();
-               if(control.getConnectDevice().indexOf(connectedDevice) >= 0){
                    if (FCH.isPlaying()){
                        String Pause;
                        Pause = getResources()
@@ -117,9 +176,6 @@ public class MainPage extends AppCompatActivity {
                                , Toast.LENGTH_SHORT)
                                .show();
                    }
-               } else {
-                   System.out.println("Nothing");
-               }
             }
         });
         rewind.setOnClickListener(new View.OnClickListener() {
@@ -171,14 +227,6 @@ public class MainPage extends AppCompatActivity {
             }
         });
         ////////////////////////////////////////////////////////////////////////
-        BLE_banana.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent ble;
-                ble = new Intent(MainPage.this, com.johnmelodyme.BSC.ble.class);
-                startActivity(ble);
-            }
-        });
 
         Facebook.setOnClickListener(new View.OnClickListener() {
             @Override

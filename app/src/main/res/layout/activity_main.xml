@@ -12,9 +12,13 @@
         android:id="@+id/gifImageView"
         android:layout_width="352dp"
         android:layout_height="108dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="113dp"
+        android:layout_marginEnd="4dp"
         android:src="@mipmap/shit"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="113dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/設置"
@@ -26,134 +30,188 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/消息"
-        android:layout_width="48dp"
-        android:layout_height="44dp"
-        android:background="@mipmap/speaker"
-        tools:layout_editor_absoluteX="218dp"
-        tools:layout_editor_absoluteY="429dp" />
-
-    <Button
-        android:id="@+id/我"
-        android:layout_width="48dp"
-        android:layout_height="44dp"
-        android:background="@mipmap/book"
-        tools:layout_editor_absoluteX="90dp"
-        tools:layout_editor_absoluteY="428dp" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="89dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/Profile"
         android:textColor="@android:color/white"
-        tools:layout_editor_absoluteX="90dp"
-        tools:layout_editor_absoluteY="471dp" />
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/我" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="43dp"
         android:layout_height="20dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="100dp"
         android:text="@string/News"
         android:textColor="@android:color/white"
-        tools:layout_editor_absoluteX="223dp"
-        tools:layout_editor_absoluteY="473dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/消息" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="19dp"
         android:text="@string/TopUp"
         android:textColor="@android:color/white"
-        tools:layout_editor_absoluteX="153dp"
-        tools:layout_editor_absoluteY="473dp" />
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/充值" />
 
     <Button
         android:id="@+id/充值"
         android:layout_width="48dp"
         android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:background="@mipmap/reload"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="428dp" />
+        app:layout_constraintEnd_toStartOf="@+id/消息"
+        app:layout_constraintStart_toEndOf="@+id/我"
+        app:layout_constraintTop_toBottomOf="@+id/停" />
+
+    <Button
+        android:id="@+id/我"
+        android:layout_width="48dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="89dp"
+        android:layout_marginEnd="11dp"
+        android:background="@mipmap/book"
+        app:layout_constraintEnd_toStartOf="@+id/充值"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <Button
+        android:id="@+id/消息"
+        android:layout_width="48dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="95dp"
+        android:background="@mipmap/speaker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/充值"
+        app:layout_constraintTop_toBottomOf="@+id/向前" />
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="59dp"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="176dp"
         android:text="@string/main"
         android:textColor="@android:color/white"
         android:textSize="0.07in"
-        tools:ignore="SmallSp"
-        tools:layout_editor_absoluteX="90dp"
-        tools:layout_editor_absoluteY="406dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/轉回"
+        tools:ignore="SmallSp" />
 
     <Button
         android:id="@+id/轉回"
         android:layout_width="66dp"
         android:layout_height="62dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginBottom="18dp"
         android:background="@mipmap/previous"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="318dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toStartOf="@+id/停"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/播放" />
 
     <Button
         android:id="@+id/停"
         android:layout_width="66dp"
         android:layout_height="62dp"
+        android:layout_marginBottom="32dp"
         android:background="@mipmap/stop"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="318dp" />
+        app:layout_constraintBottom_toTopOf="@+id/充值"
+        app:layout_constraintEnd_toStartOf="@+id/向前"
+        app:layout_constraintStart_toEndOf="@+id/轉回"
+        app:layout_constraintTop_toBottomOf="@+id/播放" />
 
     <Button
         android:id="@+id/向前"
         android:layout_width="66dp"
         android:layout_height="62dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="32dp"
         android:background="@mipmap/forward"
-        tools:layout_editor_absoluteX="211dp"
-        tools:layout_editor_absoluteY="318dp" />
+        app:layout_constraintBottom_toTopOf="@+id/消息"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/停"
+        app:layout_constraintTop_toBottomOf="@+id/播放" />
 
     <Button
         android:id="@+id/播放"
-        android:layout_width="190dp"
-        android:layout_height="87dp"
+        android:layout_width="198dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginEnd="83dp"
         android:background="@mipmap/blek"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="221dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gifImageView" />
 
     <Button
         android:id="@+id/網站"
         android:layout_width="35dp"
         android:layout_height="33dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="46dp"
         android:background="@mipmap/web"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="502dp" />
+        app:layout_constraintBottom_toTopOf="@+id/kopi_right"
+        app:layout_constraintEnd_toStartOf="@+id/微信"
+        app:layout_constraintStart_toEndOf="@+id/面子書" />
 
     <Button
         android:id="@+id/面子書"
         android:layout_width="35dp"
         android:layout_height="33dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="46dp"
         android:background="@mipmap/fb"
-        tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="502dp" />
+        app:layout_constraintBottom_toTopOf="@+id/kopi_right"
+        app:layout_constraintEnd_toStartOf="@+id/網站"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/微信"
         android:layout_width="35dp"
         android:layout_height="33dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="123dp"
+        android:layout_marginBottom="46dp"
         android:background="@mipmap/ws"
-        tools:layout_editor_absoluteX="202dp"
-        tools:layout_editor_absoluteY="502dp" />
+        app:layout_constraintBottom_toTopOf="@+id/kopi_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/網站" />
 
     <TextView
         android:id="@+id/kopi_right"
         android:layout_width="260dp"
         android:layout_height="9dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="2dp"
         android:text="@string/copyright"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="7dp"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="581dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/ble_switch"
@@ -170,8 +228,11 @@
         android:id="@+id/connected"
         android:layout_width="123dp"
         android:layout_height="49dp"
+        android:text="@string/nameble"
+        android:textColor="@android:color/white"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:layout_marginEnd="145dp"
+        app:layout_constraintEnd_toStartOf="@+id/設置"
         app:layout_constraintStart_toEndOf="@+id/ble_switch"
         app:layout_constraintTop_toTopOf="parent" />
 

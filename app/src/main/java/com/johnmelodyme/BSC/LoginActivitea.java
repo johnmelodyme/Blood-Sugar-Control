@@ -163,7 +163,7 @@ public class LoginActivitea extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (!task.isSuccessful()){
-                                    if (password.length() <= 8 ){
+                                    if (password.length() <= 3 ){
                                         stupidPassword.setError(
                                                 getString(
                                                         R.string.password_length

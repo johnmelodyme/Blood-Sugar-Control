@@ -47,6 +47,7 @@
     <string name="Contactus"> Contact Us</string>
 
     <!--BLE-->
+    <string name="nameble" translatable="false">NST-BSC</string>
     <string name="ble_on" translatable="false">Bluetooth ON </string>
     <string name="ble_off" translatable="false"> Bluetooth Off </string>
     <string name="ble_connecteddevice" translatable="false">Connected Device: </string>
