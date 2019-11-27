@@ -22,6 +22,8 @@ public class MainPage extends AppCompatActivity {
     
     BluetoothAdapter BT_ADA;
     BluetoothManager BT_MAN;
+    blecontroller control;
+    BLEDeviceAdapter adapta;
 
     Button rewind;
     Button forward;
@@ -35,10 +37,12 @@ public class MainPage extends AppCompatActivity {
     Button topup;
     Button news;
     Button setting_Activity;
+    Button on_off_ble;
     ImageView BLE_banana;
     TextView BT;
     Handler cute;
     MediaPlayer FCH;
+    TextView connected_d;
 
     int timetravel_back;
     int timetravel_forward;
@@ -64,10 +68,12 @@ public class MainPage extends AppCompatActivity {
         profile = findViewById(R.id.我);
         topup = findViewById(R.id.充值);
         news = findViewById(R.id.消息);
-        BLE_banana = findViewById(R.id.bluetooth);
+        //BLE_banana = findViewById(R.id.bluetooth);
         BT_ADA = BluetoothAdapter.getDefaultAdapter();
         BT_MAN = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         setting_Activity = findViewById(R.id.設置);
+        connected_d = findViewById(R.id.connected);
+        on_off_ble = findViewById(R.id.ble_switch);
 
         if(BT_ADA == null){
             String bna = "Bluetooth is not available";
@@ -78,38 +84,42 @@ public class MainPage extends AppCompatActivity {
             finish();
             return;
         }
-      
+
+
         FCH = MediaPlayer.create(this, R.raw.somethingsomething);
         FCH.setAudioStreamType(AudioManager.STREAM_MUSIC);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                /*
-                if (FCH.isPlaying()){
-                    String Pause;
-                    Pause = getResources()
-                            .getString
-                                    (R.string.pauseeee);
-                    FCH.pause();
-                    play.setBackgroundResource(R.mipmap.blek);
-                    Toast.makeText(MainPage.this,
-                            Pause
-                            ,Toast.LENGTH_SHORT)
-                            .show();
-                }
-                else {
-                    String Play;
-                    Play = getResources()
-                            .getString(R.string.playlalalalalala);
-                    FCH.start();
-                    play.setBackgroundResource(R.mipmap.sheeet);
-                    Toast.makeText(MainPage.this,
-                            Play
-                            , Toast.LENGTH_SHORT)
-                            .show();
-                }
-                 */
+                String connectedDevice = connected_d
+                        .getText()
+                        .toString();
+               if(control.getConnectDevice().indexOf(connectedDevice) >= 0){
+                   if (FCH.isPlaying()){
+                       String Pause;
+                       Pause = getResources()
+                               .getString
+                                       (R.string.pauseeee);
+                       FCH.pause();
+                       play.setBackgroundResource(R.mipmap.blek);
+                       Toast.makeText(MainPage.this,
+                               Pause
+                               ,Toast.LENGTH_SHORT)
+                               .show();
+                   } else {
+                       String Play;
+                       Play = getResources()
+                               .getString(R.string.playlalalalalala);
+                       FCH.start();
+                       play.setBackgroundResource(R.mipmap.sheeet);
+                       Toast.makeText(MainPage.this,
+                               Play
+                               , Toast.LENGTH_SHORT)
+                               .show();
+                   }
+               } else {
+                   System.out.println("Nothing");
+               }
             }
         });
         rewind.setOnClickListener(new View.OnClickListener() {
@@ -272,5 +282,52 @@ public class MainPage extends AppCompatActivity {
                 doubleBackToExitPressedOne = false;
             }
         }, 2000);
+    }
+
+    /*
+    public void switcher(View v){
+        switch (v.getId()){
+            case R.id.ble_switch:
+                boolean isSwitch = control.getSwitchBlueTooth();
+                if(!(isSwitch)){
+                    control.tureOnBlueTooth(this);
+                } else {
+                    control.tureOffBlueTooth();
+                    adapta.notifyDataSetChanged();
+                }
+                break;
+            case R.id.connected:
+                control.isVisibility(this);
+                break;
+            case R.id.
+        }
+    }
+     */
+    public void ble_on_of(View view){
+        boolean isSwitch = control.getSwitchBlueTooth();
+        if(!isSwitch){
+            control.tureOnBlueTooth(this);
+            System.out.println("Bluetooth On");
+        } else {
+            control.tureOffBlueTooth();
+            set_ble_background(false);
+            adapta.notifyDataSetChanged();
+        }
+    }
+
+    private void set_ble_background(boolean maybe){
+        if(maybe){
+            on_off_ble.setBackgroundResource(R.mipmap.bluoootoof);
+        } else {
+            on_off_ble.setBackgroundResource(R.mipmap.bloooootooth);
+        }
+    }
+
+    public void cc(View v){
+        if(connected_d.getText().toString().equals("NST-BSC")){
+            connected_d.setText("NST-BSC");
+        } else {
+            connected_d.setText("7550T");
+        }
     }
 }

@@ -9,12 +9,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import org.greenrobot.eventbus.EventBus;
-
+/**
+* @COPYRIGHT: LiuZhiYuan 2019
+ * @USED_WITH_PERMISSION : John Melody Melissa
+ */
 
 public class BlueToothBroadcastReceiver extends BroadcastReceiver {
 
     private IntentFilter filter;
-
 
     public IntentFilter getFilter(){
         filter = new IntentFilter();

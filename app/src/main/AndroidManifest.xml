@@ -25,7 +25,6 @@
         android:theme="@style/whateverthemeisthisidontcarebecauseitdontmatteranyway"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".bble" />
         <activity android:name=".ble" />
         <activity
             android:name=".sadthing"
