@@ -83,14 +83,13 @@ public class MainPage extends AppCompatActivity {
 
         // ""
         if(!(BT_ADA.isEnabled())){
-            for (int i=0; i < 2; i++) {
-                Toast.makeText(this, "Please Connect to \" NST-BSC \".",
-                        Toast.LENGTH_LONG)
-                        .show();
-            }
+            connectNSTBSC();
+            connectNSTBSC();
+            connectNSTBSC();
             android.content.Intent enableIntent = new android.content.Intent(
                     android.bluetooth.BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableIntent, 0);
+            connectNSTBSC();
         }
 
 
@@ -127,14 +126,15 @@ public class MainPage extends AppCompatActivity {
         if(device.equals("NST-BST")){
             BT_ADA.enable();
         }
-         */
+
 
         Set <BluetoothDevice> pairedDevices = BT_ADA.getBondedDevices();
         if(pairedDevices.size() > 0){
             for (BluetoothDevice device : pairedDevices){
                 String deviceName = device.getName();
             }
-            if (device.getName().equals("NST-BSC")){
+            String deviceName = device.getName();
+            if (deviceName.equals("NST-BSC")){
                 BT_ADA.enable();
             }
             else {
@@ -145,6 +145,7 @@ public class MainPage extends AppCompatActivity {
                         .show();
             }
         }
+         */
 
         FCH = MediaPlayer.create(this, R.raw.somethingsomething);
         FCH.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -377,5 +378,11 @@ public class MainPage extends AppCompatActivity {
         } else {
             connected_d.setText("7550T");
         }
+    }
+
+    public void connectNSTBSC(){
+        Toast.makeText(this, "Please Connect to \" NST-BSC \".",
+                Toast.LENGTH_LONG)
+                .show();
     }
 }
