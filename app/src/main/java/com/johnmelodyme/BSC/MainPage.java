@@ -14,6 +14,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -80,16 +81,34 @@ public class MainPage extends AppCompatActivity {
         BT_MAN = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         setting_Activity = findViewById(R.id.設置);
         connected_d = findViewById(R.id.connected);
+        on_off_ble = findViewById(R.id.ble_switch);
 
         // ""
         if(!(BT_ADA.isEnabled())){
-            connectNSTBSC();
-            connectNSTBSC();
-            connectNSTBSC();
+            for(int i = 1; i < 4;  i++){
+                connectNSTBSC();
+            }
             android.content.Intent enableIntent = new android.content.Intent(
                     android.bluetooth.BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableIntent, 0);
-            connectNSTBSC();
+            for(int i = 1; i < 4;  i++){
+                connectNSTBSC();
+            }
+            SystemClock.sleep(4000);
+            try
+            {
+                Thread.sleep(4000);
+            }
+            catch(InterruptedException ex)
+            {
+                Thread.currentThread().interrupt();
+            }
+            gotobluetoothsetting();
+        } else {
+            for(int i = 1; i < 4;  i++){
+                connectNSTBSC();
+            }
+            gotobluetoothsetting();
         }
 
 
@@ -104,20 +123,22 @@ public class MainPage extends AppCompatActivity {
             return;
         }
 
+        /*
         // BLUETOOTH SCANNER ::
         if(BT_ADA.getScanMode() !=
         BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE){
             android.content.Intent discoverable = new android.content.Intent(
                     BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE
             );
-            /*
+
             discoverable.putExtra(
                     BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,
                     3000
             );
-            */
+
             startActivity(discoverable);
         }
+        */
         /*
         final String the_device_I_want_to_connect;
         the_device_I_want_to_connect = "NST-BSC";
@@ -384,5 +405,23 @@ public class MainPage extends AppCompatActivity {
         Toast.makeText(this, "Please Connect to \" NST-BSC \".",
                 Toast.LENGTH_LONG)
                 .show();
+    }
+
+    public void Bluetooth(View v){
+        if (!BT_ADA.isEnabled()){
+            BT_ADA.startDiscovery();
+            on_off_ble.setBackgroundResource(R.mipmap.bluoootoof);
+            BT_ADA.enable();
+            gotobluetoothsetting();
+        } else {
+            on_off_ble.setBackgroundResource(R.mipmap.bloooootooth);
+            BT_ADA.disable();
+        }
+    }
+
+    private void gotobluetoothsetting() {
+        Intent intentOpenBluetoothSettings = new Intent();
+        intentOpenBluetoothSettings.setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
+        startActivity(intentOpenBluetoothSettings);
     }
 }

@@ -220,7 +220,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@mipmap/bluoootoof"
-        android:onClick="ble_on_of"
+        android:onClick="Bluetooth"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
