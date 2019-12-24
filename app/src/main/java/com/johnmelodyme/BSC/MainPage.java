@@ -1,6 +1,5 @@
 package com.johnmelodyme.BSC;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.bluetooth.BluetoothAdapter;
@@ -15,47 +14,84 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 import java.util.Set;
 
+/**
+ * @CREATOR: JOHN MELODY MELISSA ESKHOLAZHT .C.T.K.
+ * @DATETIME: 11/11/2019
+ * @COPYRIGHT: 2019 - 2023
+ * @PROJECTNAME: BLOOD SUGAR CONTROL
+ * @COMMENT: "I  LEARNT ANDROID PROGRAMMING IN 3 WEEKS AGO"
+ */
+
 public class MainPage extends AppCompatActivity {
-    
+
+    /*
+    public void onStart(){
+        super.onStart();
+        FirebaseUser user = FirebaseAuth.getInstance()
+                .getCurrentUser();
+        if (user != null) {
+            FirebaseAuth.getInstance()
+                    .signOut();
+        } else {
+            while (true) {
+                System.out.println("proceed");
+                checkBLUETOOTH();
+            }
+        }
+    }
+
+     */
+
+    public void onDestroy(){
+        super.onDestroy();
+        FirebaseAuth.getInstance()
+                .signOut();
+    }
+
+    private void checkBLUETOOTH(){
+        if(BT_ADA == null){
+            String bna = "Bluetooth is not available";
+            Toast.makeText(MainPage.this,
+                    bna,
+                    Toast.LENGTH_LONG)
+                    .show();
+            finish();
+            return;
+        }
+    }
+
     BluetoothAdapter BT_ADA;
     BluetoothManager BT_MAN;
     blecontroller control;
     BLEDeviceAdapter adapta;
     BluetoothSocket BLE_socket;
     BluetoothDevice device;
-
-    Button rewind;
-    Button forward;
-    Button stop;
-    Button play;
-    Button wechat;
-    Button web;
-    Button Facebook;
-    //SeekBar seekBar_seekingtheBar_芭比;
-    Button profile;
-    Button topup;
-    Button news;
-    Button setting_Activity;
-    Button on_off_ble;
+    Button profile, Facebook, web, whatsapp, play, stop;
+    Button on_off_ble, rewind,forward, setting_Activity, news, topup;
     ImageView BLE_banana;
     TextView BT;
     Handler cute;
     MediaPlayer FCH;
+    AudioManager am;
     TextView connected_d;
-
+    int REQUEST_CONNECT_DEVICE;
     int timetravel_back;
     int timetravel_forward;
-
     {
+        REQUEST_CONNECT_DEVICE = 1;
         timetravel_back = 5000;
         timetravel_forward = 5000;
     }
@@ -65,12 +101,13 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         cute = new Handler();
         rewind = findViewById(R.id.轉回);
         forward = findViewById(R.id.向前);
         stop = findViewById(R.id.停);
         play = findViewById(R.id.播放);
-        wechat = findViewById(R.id.微信);
+        whatsapp = findViewById(R.id.微信);
         web = findViewById(R.id.網站);
         Facebook = findViewById(R.id.面子書);
         profile = findViewById(R.id.我);
@@ -110,66 +147,27 @@ public class MainPage extends AppCompatActivity {
             }
             gotobluetoothsetting();
         }
-
-
-        // "IF BLUETOOTH NOT SUPPORTED ::
-        if(BT_ADA == null){
-            String bna = "Bluetooth is not available";
-            Toast.makeText(MainPage.this,
-                    bna,
-                    Toast.LENGTH_LONG)
-                    .show();
-            finish();
-            return;
-        }
-
         /*
-        // BLUETOOTH SCANNER ::
-        if(BT_ADA.getScanMode() !=
-        BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE){
-            android.content.Intent discoverable = new android.content.Intent(
-                    BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE
-            );
-
-            discoverable.putExtra(
-                    BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,
-                    3000
-            );
-
-            startActivity(discoverable);
-        }
-        */
-        /*
-        final String the_device_I_want_to_connect;
-        the_device_I_want_to_connect = "NST-BSC";
-        String devName;
-        devName = device.getName();
-        if(device.equals("NST-BST")){
-            BT_ADA.enable();
-        }
-
-
-        Set <BluetoothDevice> pairedDevices = BT_ADA.getBondedDevices();
-        if(pairedDevices.size() > 0){
-            for (BluetoothDevice device : pairedDevices){
-                String deviceName = device.getName();
-            }
-            String deviceName = device.getName();
-            if (deviceName.equals("NST-BSC")){
-                BT_ADA.enable();
-            }
-            else {
-                String nst = "Please Use NST-BSC Headset!";
-                System.out.println(nst);
-                Toast.makeText(this, nst,
-                        Toast.LENGTH_LONG)
-                        .show();
-            }
-        }
+        Intent connectDevice;
+        connectDevice = new Intent(MainPage.this, MainPage.class);
+        startActivityForResult(connectDevice, REQUEST_CONNECT_DEVICE);
          */
+        // "IF BLUETOOTH NOT SUPPORTED ::
 
-        FCH = MediaPlayer.create(this, R.raw.somethingsomething);
+
+        starting();
+        SHOW_BLE();
+        AudioManager mode = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+        mode.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+        AudioManager am;
+        am = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+        am.setMode(AudioManager.STREAM_MUSIC);
+        am.setSpeakerphoneOn(false);
+        FCH = MediaPlayer.create(MainPage.this,
+                R.raw.somethingsomething);
         FCH.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        FCH.setVolume(80,80);
+        FCH.setLooping(true);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -245,7 +243,6 @@ public class MainPage extends AppCompatActivity {
                         .show();
                 FCH.pause();
                 play.setBackgroundResource(R.mipmap.blek);
-                System.out.println("YOU CAN MOCK ME BUT THAT DON'T MAKE YOU BETTER THAN ME");
             }
         });
         ////////////////////////////////////////////////////////////////////////
@@ -262,7 +259,7 @@ public class MainPage extends AppCompatActivity {
                 starlab();
             }
         });
-        wechat.setOnClickListener(new View.OnClickListener() {
+        whatsapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /*
@@ -309,6 +306,17 @@ public class MainPage extends AppCompatActivity {
         });
     }
 
+    private void starting() {
+       // BT_MAN.getAdapter().enable();
+    }
+
+    private void SHOW_BLE() {
+        //https://stackoverflow.com/questions/36525477/display-ble-data-in-textview
+        String msg;
+        msg = "NST_BSC";
+        connected_d.setText(msg);
+    }
+
     private void toSettingActivity() {
         Intent set;
         set = new Intent(MainPage.this, sadthing.class);
@@ -334,7 +342,7 @@ public class MainPage extends AppCompatActivity {
                 .show();
     }
 
-    /* TEKAN DUA KALI UNTUK PULANG KE MAIN: */
+
     boolean doubleBackToExitPressedOne = false;
     @Override
     public void onBackPressed() {
@@ -352,6 +360,8 @@ public class MainPage extends AppCompatActivity {
                 doubleBackToExitPressedOne = false;
             }
         }, 2000);
+        FirebaseAuth.getInstance()
+                .signOut();
     }
 
     /*
@@ -373,6 +383,7 @@ public class MainPage extends AppCompatActivity {
         }
     }
      */
+
     public void ble_on_of(View view){
         boolean isSwitch = control.getSwitchBlueTooth();
         if(!isSwitch){
@@ -416,12 +427,24 @@ public class MainPage extends AppCompatActivity {
         } else {
             on_off_ble.setBackgroundResource(R.mipmap.bloooootooth);
             BT_ADA.disable();
+            FCH.pause();
+            warning();
         }
+    }
+
+    private void warning() {
+        Toast.makeText(this,
+                "Please Connect to the Headset.",
+                Toast.LENGTH_SHORT)
+                .show();
     }
 
     private void gotobluetoothsetting() {
         Intent intentOpenBluetoothSettings = new Intent();
         intentOpenBluetoothSettings.setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
         startActivity(intentOpenBluetoothSettings);
+        for(int i = 1; i < 10;  i++){
+            connectNSTBSC();
+        }
     }
 }

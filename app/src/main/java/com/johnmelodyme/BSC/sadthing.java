@@ -1,144 +1,90 @@
 package com.johnmelodyme.BSC;
-/*
- *このページは、読み込みに伴うスプラッシュです。
- * これは John Melody Melissa によってコーディングされています。
- * このライセンスは、商標、サービスマーク、
- * または貢献者のロゴ（準拠するために必要な場合を除く）
- * セクション3.4の通知要件）。
- **/
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
+import java.util.List;
 
+/**
+ * @CREATOR: JOHN MELODY MELISSA ESKHOLAZHT .C.T.K.
+ * @CREATED: 16/12/2019
+ * @COPYRIGHT: 2019 - 2023
+ * @PROJECTNAME: BLOOD SUGAR CONTROL
+ */
 public class sadthing extends AppCompatActivity {
+    ListView listView;
+    ArrayAdapter arrayAdapter;
+    FirebaseAuth firebaseAuth;
+    String [] SETTINGS;
 
-    TextView emailtodeveloperlaelseyouwillbeslowlycrying;
-    TextView aboutUs;
-    TextView $VERSION;
-    Button Logout_登出;
-
-    FirebaseAuth F;
-
+    {
+        SETTINGS = new String[]{"Report Error", "About Us"};
+    }
+    private void INIT() {
+        listView = findViewById(R.id.Setting_LV);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sadthing);
+        INIT();
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        F = FirebaseAuth.getInstance();
-
-        emailtodeveloperlaelseyouwillbeslowlycrying = findViewById(R.id.emailtodeveloper);
-        aboutUs = findViewById(R.id.Aboutus);
-        $VERSION = findViewById(R.id.version);
-        //Logout_登出 = findViewById(R.id.登出);
-
-        emailtodeveloperlaelseyouwillbeslowlycrying.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                johnmelodyme();
-            }
-        });
-
-        aboutUs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                starlabs();
-            }
-        });
-
-        $VERSION.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                version();
-            }
-        });
-
-
+        Context context;
+        arrayAdapter = new ArrayAdapter<String>(this,
+                R.layout.support_simple_spinner_dropdown_item, SETTINGS);
+        listView.setAdapter(arrayAdapter);
+        
+        ON_CLICK_LIST_ITEM();
     }
 
-    private void johnmelodyme() {
-        Intent EmailDEV;
-        String devemail;
-        Uri email;
-        email = Uri.parse("john@braintechgroup.com");
-        EmailDEV = new Intent(Intent.ACTION_SENDTO);
-        devemail = "mailto: John@braintechgroup.com";
-        Toast.makeText(sadthing.this,
-                devemail,
-                Toast.LENGTH_SHORT)
-                .show();
-    }
-
-    private void starlabs(){
-        Intent 網站;
-        網站 = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("https://www.starlabs.com.my/"));
-        startActivity(網站);
-    }
-
-    private void version(){
-        Intent 網站;
-        網站 = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("https://github.com/johnmelodyme"));
-        startActivity(網站);
-    }
-
-    private void please_log_out() {
-        F.signOut();
-        FirebaseAuth.AuthStateListener F_listener;
-        F_listener = new FirebaseAuth.AuthStateListener() {
+    private void ON_CLICK_LIST_ITEM() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user_la;
-                user_la = firebaseAuth.getCurrentUser();
-                if (user_la == null){
-                    Intent toMainLA;
-                    toMainLA = new Intent(sadthing.this, LoginActivitea.class);
-                    startActivity(toMainLA);
-                    finish();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String CLICKED;
+                CLICKED = (String) parent.getItemAtPosition(position);
+                if (CLICKED.equals("Report Error")){
+                    EMAIL_TO_DEVELOPER();
+                }
+                else if (CLICKED.equals("About Us")){
+                    Intent web;
+                    web = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://www.starlabs.com.my/"));
+                    startActivity(web);
+                }
+                else {
+                    System.out.println("--");
                 }
             }
-        };
-        gotomain();
+        });
     }
 
-    private void gotomain() {
-        Intent toMainLA;
-        toMainLA = new Intent(sadthing.this, LoginActivitea.class);
-        startActivity(toMainLA);
-        finish();
-    }
-
-    // 兩次按下以退出應用程序 ::
-    boolean doubleBackToExitPressedOne = false;
-
-    @Override
-    public void onBackPressed() {
-        if (doubleBackToExitPressedOne) {
-            super.onBackPressed();
-            return;
+    private void EMAIL_TO_DEVELOPER() {
+        Intent emailTODeveloper = new Intent(Intent.ACTION_SEND);
+        emailTODeveloper.setType("text/plain");
+        emailTODeveloper.putExtra(Intent.EXTRA_EMAIL, new String[]
+                {"john@braintechgroup.com"});
+        emailTODeveloper.putExtra(Intent.EXTRA_CC, new String[]
+                {"ang@braintechgroup.com"});
+        emailTODeveloper.putExtra(Intent.EXTRA_SUBJECT,
+                " Hey Developer, I have some suggestion and Issue!");
+        emailTODeveloper.putExtra(Intent.EXTRA_TEXT,
+                "Hey Developer, I have some suggestion and Issue!");
+        try {
+            startActivity(Intent.createChooser(emailTODeveloper,"Pick a Email Platform: "));
+        } catch (Exception ignored) {
         }
-        this.doubleBackToExitPressedOne = true;
-        Toast.makeText(this, R.string.回回,
-                Toast.LENGTH_SHORT)
-                .show();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                doubleBackToExitPressedOne = false;
-            }
-        }, 2000);
     }
 }
-
