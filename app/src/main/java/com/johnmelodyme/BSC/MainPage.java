@@ -59,6 +59,9 @@ public class MainPage extends AppCompatActivity {
         super.onDestroy();
         FirebaseAuth.getInstance()
                 .signOut();
+        AudioManager mode = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+        mode.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+        finish();
     }
 
     private void checkBLUETOOTH(){
@@ -161,7 +164,7 @@ public class MainPage extends AppCompatActivity {
         mode.setRingerMode(AudioManager.RINGER_MODE_SILENT);
         AudioManager am;
         am = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
-        am.setMode(AudioManager.STREAM_MUSIC);
+        am.setMode(AudioManager.MODE_IN_CALL);
         am.setSpeakerphoneOn(false);
         FCH = MediaPlayer.create(MainPage.this,
                 R.raw.somethingsomething);
@@ -447,4 +450,5 @@ public class MainPage extends AppCompatActivity {
             connectNSTBSC();
         }
     }
+
 }

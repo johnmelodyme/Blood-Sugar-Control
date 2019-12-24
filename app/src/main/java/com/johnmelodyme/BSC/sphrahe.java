@@ -36,38 +36,6 @@ public class sphrahe extends AppCompatActivity {
         可愛的.postDelayed(new Runnable() {
             @Override
             public void run() {
-                /*
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        while (什麼鬼東西 < 100){
-                            什麼鬼東西+=1;
-                            android.os.SystemClock.sleep(50);
-                            可愛的.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    圈圈.setProgress(什麼鬼東西);
-                                }
-                            });
-                        }
-                        可愛的.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                圈圈.setProgress(什麼鬼東西);
-                            }
-                        });
-
-                        try {
-                             // 睡眠2000毫秒 ::
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e ){
-                            e.printStackTrace();
-                        }
-                    }
-                });
-
-                 */
-
 
                 Intent toAuthenticaxion;
                 toAuthenticaxion = new Intent(sphrahe.this, LoginActivitea.class);

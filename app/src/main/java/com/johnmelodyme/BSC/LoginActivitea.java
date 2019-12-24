@@ -46,7 +46,8 @@ public class LoginActivitea extends AppCompatActivity {
 
         if (auth_firebase
                 .getCurrentUser() != null){
-            moozik();
+            PLEASE_CONNECTBLUETTOH();
+
         }
 
         loginbutton.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +96,7 @@ public class LoginActivitea extends AppCompatActivity {
                                         ).show();
                                     }
                                 } else {
-                                    moozik();
+                                    PLEASE_CONNECTBLUETTOH();
                                 }
                             }
                         });
@@ -103,11 +104,12 @@ public class LoginActivitea extends AppCompatActivity {
         });
     }
 
-    private void moozik() {
-        Intent musicpage;
-        musicpage = new Intent(LoginActivitea.this, MainPage.class);
-        startActivity(musicpage);
+    private void PLEASE_CONNECTBLUETTOH() {
+        Intent toBLO;
+        toBLO = new Intent(LoginActivitea.this, bbb.class);
+        startActivity(toBLO);
     }
+
 
     @Override
     public void onStart(){
@@ -116,11 +118,7 @@ public class LoginActivitea extends AppCompatActivity {
         currentUser = auth_firebase.getCurrentUser();
     }
 
-    public void temporary(){
-        Intent temp;
-        temp = new Intent(LoginActivitea.this, MainPage.class);
-        startActivity(temp);
-    }
+
 
 
 

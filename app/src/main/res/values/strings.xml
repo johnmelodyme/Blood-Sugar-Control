@@ -51,4 +51,5 @@
     <string name="ble_on" translatable="false">Bluetooth ON </string>
     <string name="ble_off" translatable="false"> Bluetooth Off </string>
     <string name="ble_connecteddevice" translatable="false">Connected Device: </string>
+    <string name="ppp" translatable="false">Please Connect To the Bluetooth Device <br /> <br /> "NST-BSC" </string>
 </resources>

@@ -13,8 +13,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
 
+    <permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
 
     <uses-feature android:name="android.hardware.bluetooth" />
 
@@ -28,7 +28,8 @@
         android:supportsRtl="true"
         android:theme="@style/whateverthemeisthisidontcarebecauseitdontmatteranyway"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".sadthing"/>
+        <activity android:name=".bbb"></activity>
+        <activity android:name=".sadthing" />
         <activity android:name=".ble" />
         <activity
             android:name=".preferencesla"
