@@ -1,26 +1,23 @@
 package com.johnmelodyme.BSC;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivitea extends AppCompatActivity {
 
@@ -30,7 +27,23 @@ public class LoginActivitea extends AppCompatActivity {
     Button loginbutton;
     FirebaseAuth auth_firebase;
 
+    @Override
+    public void onStart(){
+        super.onStart();
+        // From STACKOVERFLOW: https://stackoverflow.com/questions/59483359/silentmode-android-on-start
+        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        if (audioManager != null) {
+            int currentMode = audioManager.getRingerMode();
 
+            // Make ringer mode silent
+            if (currentMode != AudioManager.RINGER_MODE_NORMAL) {
+                System.out.println("----");
+           //     audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+            } else {
+                audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_TOGGLE_MUTE,0);
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +57,6 @@ public class LoginActivitea extends AppCompatActivity {
 
         auth_firebase = FirebaseAuth.getInstance();
 
-        if (auth_firebase
-                .getCurrentUser() != null){
-            PLEASE_CONNECTBLUETTOH();
-
-        }
 
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,49 +104,13 @@ public class LoginActivitea extends AppCompatActivity {
                                         ).show();
                                     }
                                 } else {
-                                    PLEASE_CONNECTBLUETTOH();
+                                    Intent toBLO;
+                                    toBLO = new Intent(LoginActivitea.this, message.class);
+                                    startActivity(toBLO);
                                 }
                             }
                         });
             }
         });
-    }
-
-    private void PLEASE_CONNECTBLUETTOH() {
-        Intent toBLO;
-        toBLO = new Intent(LoginActivitea.this, bbb.class);
-        startActivity(toBLO);
-    }
-
-
-    @Override
-    public void onStart(){
-        super.onStart();
-        FirebaseUser currentUser;
-        currentUser = auth_firebase.getCurrentUser();
-    }
-
-
-
-
-
-    boolean doubleBackToExitPressedOne = false;
-
-    @Override
-    public void onBackPressed() {
-        if (doubleBackToExitPressedOne) {
-            super.onBackPressed();
-            return;
-        }
-        this.doubleBackToExitPressedOne = true;
-        Toast.makeText(this, R.string.回,
-                Toast.LENGTH_SHORT)
-                .show();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                doubleBackToExitPressedOne = false;
-            }
-        }, 2000);
     }
 }

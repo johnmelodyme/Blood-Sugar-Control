@@ -2,20 +2,18 @@ package com.johnmelodyme.BSC;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class bbb extends AppCompatActivity {
+public class message extends AppCompatActivity {
 
     public void onBackPressed(){
         super.onBackPressed();
+        Intent toBLO;
+        toBLO = new Intent(message.this, MainPage.class);
+        startActivity(toBLO);
     }
 
     TextView warning;
@@ -26,17 +24,16 @@ public class bbb extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bbb);
 
+
         warning = findViewById(R.id.warning);
         handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 Intent toAuthenticaxion;
-                toAuthenticaxion = new Intent(bbb.this, MainPage.class);
+                toAuthenticaxion = new Intent(message.this, MainPage.class);
                 startActivity(toAuthenticaxion);
             }
-        },4000);
-
+        },5000);
     }
 }

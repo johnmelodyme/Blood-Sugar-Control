@@ -1,0 +1,5 @@
+<root>
+    <item name='android.media.AudioManager int getRingerMode()'>
+        <annotation name='org.jetbrains.annotations.NonBlocking' />
+    </item>
+</root>

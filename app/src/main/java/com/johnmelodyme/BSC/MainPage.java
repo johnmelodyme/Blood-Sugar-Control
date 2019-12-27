@@ -1,5 +1,6 @@
 package com.johnmelodyme.BSC;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.bluetooth.BluetoothAdapter;
@@ -11,10 +12,10 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,9 +24,6 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.ArrayList;
-import java.util.Set;
 
 /**
  * @CREATOR: JOHN MELODY MELISSA ESKHOLAZHT .C.T.K.
@@ -36,8 +34,8 @@ import java.util.Set;
  */
 
 public class MainPage extends AppCompatActivity {
-
-    /*
+   /*
+    @Override
     public void onStart(){
         super.onStart();
         FirebaseUser user = FirebaseAuth.getInstance()
@@ -46,23 +44,34 @@ public class MainPage extends AppCompatActivity {
             FirebaseAuth.getInstance()
                     .signOut();
         } else {
+            checkBLUETOOTH();
             while (true) {
                 System.out.println("proceed");
-                checkBLUETOOTH();
             }
+        }
+
+        if(!BT_ADA.isEnabled()){
+            connectNSTBSC();
+            connectNSTBSC();
+            connectNSTBSC();
+            connectNSTBSC();
+            android.content.Intent enableIntent = new android.content.Intent(
+                    android.bluetooth.BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableIntent, 0);
+            gotobluetoothsetting();
+        } else {
+            connectNSTBSC();
+            connectNSTBSC();
+            connectNSTBSC();
+            connectNSTBSC();
+            android.content.Intent enableIntent = new android.content.Intent(
+                    android.bluetooth.BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableIntent, 0);
+            gotobluetoothsetting();
         }
     }
 
-     */
-
-    public void onDestroy(){
-        super.onDestroy();
-        FirebaseAuth.getInstance()
-                .signOut();
-        AudioManager mode = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
-        mode.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-        finish();
-    }
+    */
 
     private void checkBLUETOOTH(){
         if(BT_ADA == null){
@@ -72,7 +81,6 @@ public class MainPage extends AppCompatActivity {
                     Toast.LENGTH_LONG)
                     .show();
             finish();
-            return;
         }
     }
 
@@ -88,7 +96,6 @@ public class MainPage extends AppCompatActivity {
     TextView BT;
     Handler cute;
     MediaPlayer FCH;
-    AudioManager am;
     TextView connected_d;
     int REQUEST_CONNECT_DEVICE;
     int timetravel_back;
@@ -98,6 +105,22 @@ public class MainPage extends AppCompatActivity {
         timetravel_back = 5000;
         timetravel_forward = 5000;
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onStart(){
+        super.onStart();
+        AudioManager manager;
+        manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        if (manager != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                manager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_TOGGLE_MUTE,0);
+                manager.setMode(AudioManager.RINGER_MODE_SILENT);
+            }
+        }
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,40 +139,45 @@ public class MainPage extends AppCompatActivity {
         profile = findViewById(R.id.我);
         topup = findViewById(R.id.充值);
         news = findViewById(R.id.消息);
-        //BLE_banana = findViewById(R.id.bluetooth);
         BT_ADA = BluetoothAdapter.getDefaultAdapter();
         BT_MAN = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         setting_Activity = findViewById(R.id.設置);
         connected_d = findViewById(R.id.connected);
         on_off_ble = findViewById(R.id.ble_switch);
 
-        // ""
-        if(!(BT_ADA.isEnabled())){
-            for(int i = 1; i < 4;  i++){
-                connectNSTBSC();
+
+
+
+        FirebaseUser user = FirebaseAuth.getInstance()
+                .getCurrentUser();
+        if (user != null) {
+            FirebaseAuth.getInstance()
+                    .signOut();
+        } else {
+            checkBLUETOOTH();
+            while (true) {
+                System.out.println("proceed");
             }
+        }
+
+        if(!BT_ADA.isEnabled()){
+            connectNSTBSC();
+            connectNSTBSC();
+            connectNSTBSC();
+            connectNSTBSC();
             android.content.Intent enableIntent = new android.content.Intent(
                     android.bluetooth.BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableIntent, 0);
-            for(int i = 1; i < 4;  i++){
-                connectNSTBSC();
-            }
-            SystemClock.sleep(4000);
-            try
-            {
-                Thread.sleep(4000);
-            }
-            catch(InterruptedException ex)
-            {
-                Thread.currentThread().interrupt();
-            }
             gotobluetoothsetting();
         } else {
-            for(int i = 1; i < 4;  i++){
-                connectNSTBSC();
-            }
-            gotobluetoothsetting();
+            connectNSTBSC();
+            connectNSTBSC();
+            connectNSTBSC();
+            connectNSTBSC();
         }
+
+
+
         /*
         Intent connectDevice;
         connectDevice = new Intent(MainPage.this, MainPage.class);
@@ -158,19 +186,22 @@ public class MainPage extends AppCompatActivity {
         // "IF BLUETOOTH NOT SUPPORTED ::
 
 
-        starting();
         SHOW_BLE();
+
+        /*
         AudioManager mode = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
-        mode.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-        AudioManager am;
-        am = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
-        am.setMode(AudioManager.MODE_IN_CALL);
-        am.setSpeakerphoneOn(false);
+        if }(mode != null) {
+            mode.setRingerMode(RINGER_MODE_SILENT);
+        }
+         */
+
+
         FCH = MediaPlayer.create(MainPage.this,
                 R.raw.somethingsomething);
         FCH.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        FCH.setVolume(80,80);
+        FCH.setVolume(0,0);
         FCH.setLooping(true);
+
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -192,6 +223,7 @@ public class MainPage extends AppCompatActivity {
                        String Play;
                        Play = getResources()
                                .getString(R.string.playlalalalalala);
+                       FCH.setVolume(80,80);
                        FCH.start();
                        play.setBackgroundResource(R.mipmap.sheeet);
                        Toast.makeText(MainPage.this,
@@ -246,6 +278,10 @@ public class MainPage extends AppCompatActivity {
                         .show();
                 FCH.pause();
                 play.setBackgroundResource(R.mipmap.blek);
+                FirebaseAuth.getInstance()
+                        .signOut();
+                SystemClock.sleep(3000);
+                System.exit(0);
             }
         });
         ////////////////////////////////////////////////////////////////////////
@@ -309,9 +345,6 @@ public class MainPage extends AppCompatActivity {
         });
     }
 
-    private void starting() {
-       // BT_MAN.getAdapter().enable();
-    }
 
     private void SHOW_BLE() {
         //https://stackoverflow.com/questions/36525477/display-ble-data-in-textview
@@ -365,6 +398,7 @@ public class MainPage extends AppCompatActivity {
         }, 2000);
         FirebaseAuth.getInstance()
                 .signOut();
+        System.exit(0);
     }
 
     /*
@@ -451,4 +485,10 @@ public class MainPage extends AppCompatActivity {
         }
     }
 
+    public void onDestroy(){
+        super.onDestroy();
+        FirebaseAuth.getInstance()
+                .signOut();
+        finish();
+    }
 }
