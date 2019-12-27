@@ -34,6 +34,6 @@ public class message extends AppCompatActivity {
                 toAuthenticaxion = new Intent(message.this, MainPage.class);
                 startActivity(toAuthenticaxion);
             }
-        },5000);
+        },6000);
     }
 }

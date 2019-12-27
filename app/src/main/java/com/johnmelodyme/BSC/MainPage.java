@@ -34,44 +34,6 @@ import com.google.firebase.auth.FirebaseUser;
  */
 
 public class MainPage extends AppCompatActivity {
-   /*
-    @Override
-    public void onStart(){
-        super.onStart();
-        FirebaseUser user = FirebaseAuth.getInstance()
-                .getCurrentUser();
-        if (user != null) {
-            FirebaseAuth.getInstance()
-                    .signOut();
-        } else {
-            checkBLUETOOTH();
-            while (true) {
-                System.out.println("proceed");
-            }
-        }
-
-        if(!BT_ADA.isEnabled()){
-            connectNSTBSC();
-            connectNSTBSC();
-            connectNSTBSC();
-            connectNSTBSC();
-            android.content.Intent enableIntent = new android.content.Intent(
-                    android.bluetooth.BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableIntent, 0);
-            gotobluetoothsetting();
-        } else {
-            connectNSTBSC();
-            connectNSTBSC();
-            connectNSTBSC();
-            connectNSTBSC();
-            android.content.Intent enableIntent = new android.content.Intent(
-                    android.bluetooth.BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableIntent, 0);
-            gotobluetoothsetting();
-        }
-    }
-
-    */
 
     private void checkBLUETOOTH(){
         if(BT_ADA == null){
@@ -81,6 +43,52 @@ public class MainPage extends AppCompatActivity {
                     Toast.LENGTH_LONG)
                     .show();
             finish();
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onStart(){
+        super.onStart();
+        AudioManager manager;
+        manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        if (manager != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                manager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_TOGGLE_MUTE,0);
+                manager.setMode(AudioManager.RINGER_MODE_SILENT);
+                manager.adjustVolume(AudioManager.ADJUST_MUTE, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+            }
+        }
+    }
+
+    public void onDestroy(){
+        super.onDestroy();
+        FirebaseAuth.getInstance()
+                .signOut();
+        finish();
+    }
+
+    private void AUDIO_OFF(){
+        AudioManager manager;
+        manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        if (manager != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                manager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_TOGGLE_MUTE,0);
+                manager.setMode(AudioManager.RINGER_MODE_SILENT);
+                manager.adjustVolume(AudioManager.ADJUST_MUTE, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+            }
+        }
+    }
+
+    private void AUDIO_ON(){
+        AudioManager manager;
+        manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        if (manager != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                //manager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_TOGGLE_MUTE,0);
+                manager.setMode(AudioManager.RINGER_MODE_NORMAL);
+                manager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.ADJUST_RAISE);
+            }
         }
     }
 
@@ -105,21 +113,6 @@ public class MainPage extends AppCompatActivity {
         timetravel_back = 5000;
         timetravel_forward = 5000;
     }
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    @Override
-    public void onStart(){
-        super.onStart();
-        AudioManager manager;
-        manager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-        if (manager != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                manager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_TOGGLE_MUTE,0);
-                manager.setMode(AudioManager.RINGER_MODE_SILENT);
-            }
-        }
-    }
-
 
 
     @Override
@@ -170,6 +163,7 @@ public class MainPage extends AppCompatActivity {
             startActivityForResult(enableIntent, 0);
             gotobluetoothsetting();
         } else {
+            gotobluetoothsetting();
             connectNSTBSC();
             connectNSTBSC();
             connectNSTBSC();
@@ -213,6 +207,7 @@ public class MainPage extends AppCompatActivity {
                        Pause = getResources()
                                .getString
                                        (R.string.pauseeee);
+                       AUDIO_OFF();
                        FCH.pause();
                        play.setBackgroundResource(R.mipmap.blek);
                        Toast.makeText(MainPage.this,
@@ -223,6 +218,7 @@ public class MainPage extends AppCompatActivity {
                        String Play;
                        Play = getResources()
                                .getString(R.string.playlalalalalala);
+                       AUDIO_ON();
                        FCH.setVolume(80,80);
                        FCH.start();
                        play.setBackgroundResource(R.mipmap.sheeet);
@@ -230,6 +226,7 @@ public class MainPage extends AppCompatActivity {
                                Play
                                , Toast.LENGTH_SHORT)
                                .show();
+
                    }
             }
         });
@@ -278,6 +275,10 @@ public class MainPage extends AppCompatActivity {
                         .show();
                 FCH.pause();
                 play.setBackgroundResource(R.mipmap.blek);
+                BT_ADA.disable();
+                Intent gotoSPLASH;
+                gotoSPLASH = new Intent(MainPage.this, message.class);
+                startActivity(gotoSPLASH);
                 FirebaseAuth.getInstance()
                         .signOut();
                 SystemClock.sleep(3000);
@@ -485,10 +486,5 @@ public class MainPage extends AppCompatActivity {
         }
     }
 
-    public void onDestroy(){
-        super.onDestroy();
-        FirebaseAuth.getInstance()
-                .signOut();
-        finish();
-    }
+
 }
